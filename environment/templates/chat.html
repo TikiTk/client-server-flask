@@ -22,8 +22,8 @@
         });
 
         function refreshMessages(message) {
-            $(".media-list").append('<li class="media"><div class="media-body"><div class="media"><div class="media-body">'
-                + message.data.message + '<br/><small class="text-muted">' + message.data.author + ' | ' + message.data.createDate + '</small><hr/></div></div></div></li>');
+            $(".media-list").append('<li class="media "><div class="media-body"><div class="media"><div class="media-body"> <pre>'
+                + message.data.message + '</pre><br/><small class="text-muted">' + message.data.author + ' | ' + message.data.createDate + '</small><hr/></div></div></div></li>');
         }
 
         $(function(){
@@ -71,13 +71,24 @@
         }
         .media-list {
             overflow: auto;
+
+         display: inline-block;
+        text-align: left;
+        width: auto;
+
         }
+        .fixed-panel {
+        min-height: 10;
+            max-height: 10;
+     overflow-y: scroll;
+        }
+
     </style>
 </head>
 <body>
 <div class="container">
     <div class="row " style="padding-top:40px;">
-        <h3 class="text-center">Realtime Chat Application with Flask, SocketIO</h3>
+        <h3 class="text-center">Multi-client chat with Flask-socketIO</h3>
         <br/><br/>
 
         <div class="col-md-12">
@@ -91,7 +102,7 @@
                 </div>
                 <div class="panel-footer">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter Message" id="messageText" autofocus/>
+                        <textarea class="form-control" placeholder="Enter Message" id="messageText" autofocus></textarea>
                                     <span class="input-group-btn">
                                         <button class="btn btn-info" type="button" id="sendMessage">SEND <span class="glyphicon glyphicon-send"></span></button>
                                     </span>
